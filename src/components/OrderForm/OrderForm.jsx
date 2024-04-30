@@ -30,11 +30,9 @@ function OrderForm({ onSubmit, onClose }) {
                 <h1 className='form-title'>Оформление заказа</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="name">Имя:</label>
                         <input type="text" name='name' value={formData.name} onChange={handleChange} placeholder='Имя' required />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="description">Примечание к заказу:</label>
                         <input type="text" name='description' value={formData.description} onChange={handleChange} placeholder='Примечание к заказу' required />
                     </div>
                     <button className='submit-button' type='submit'>Оформить заказ</button>

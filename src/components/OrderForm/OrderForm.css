@@ -30,11 +30,6 @@
   margin-bottom: 20px;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-
 .form-group input {
   width: calc(100% - 20px); /* Учитываем отступы padding */
   padding: 8px;
