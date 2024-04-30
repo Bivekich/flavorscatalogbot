@@ -5,9 +5,11 @@ const bot = new Telegraf(TOKEN)
 const web_link = 'https://flavorscatalogbot.netlify.app/'
 
 bot.start((ctx) => 
-ctx.reply("Welcome :)))", {
+ctx.reply(`Давайте начнем 🥩
+
+Пожалуйста, нажмите на кнопку ниже, чтобы заказать свой идеальный обед!.`, {
     reply_markup: {
-        keyboard: [[{text: "web app", web_app: {url: web_link}}]]
+        keyboard: [[{text: "Заказать еду", web_app: {url: web_link}}]]
     }
 }))
 
