@@ -42,7 +42,7 @@ function App() {
   };
 
   const onCheckout = () => {
-    Telegram.MainButton.text = "Pay :)";
+    Telegram.MainButton.text = "Заказать";
     Telegram.MainButton.show();
   };
 

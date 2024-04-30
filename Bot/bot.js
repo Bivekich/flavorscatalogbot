@@ -1,8 +1,8 @@
-const {Telegraf} = require('telegraf')
-const TOKEN = ''
+import { Telegraf } from "telegraf"
+const TOKEN = '6757073330:AAFtn6evlg50y9F70ncomVXWlikDF6LhKLk'
 const bot = new Telegraf(TOKEN)
 
-const web_link = ''
+const web_link = 'https://flavorscatalogbot.netlify.app/'
 
 bot.start((ctx) => 
 ctx.reply("Welcome :)))", {
@@ -10,3 +10,5 @@ ctx.reply("Welcome :)))", {
         keyboard: [[{text: "web app", web_app: {url: web_link}}]]
     }
 }))
+
+bot.launch()
