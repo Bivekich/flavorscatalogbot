@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 200px; /* Увеличил ширину карточки */
-  height: 300px; /* Увеличил высоту карточки */
+  width: 150px; /* Увеличил ширину карточки */
+  height: 250px; /* Увеличил высоту карточки */
   border: 2px solid var(--primary-color);
   padding: 1rem; /* Увеличил внутренний отступ */
   margin: 20px 10px; /* Увеличил внешний отступ */
