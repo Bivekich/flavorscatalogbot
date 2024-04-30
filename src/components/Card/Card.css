@@ -1,44 +1,44 @@
 :root {
-  --primary-color: #FF6B6B; /* Новый основной цвет */
+  --primary-color: #FF6B6B; 
 }
 
 .card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 150px; /* Увеличил ширину карточки */
-  height: 250px; /* Увеличил высоту карточки */
+  width: 150px; 
+  height: 250px;
   border: 2px solid var(--primary-color);
-  padding: 1rem; /* Увеличил внутренний отступ */
-  margin: 20px 10px; /* Увеличил внешний отступ */
+  padding: 0.5rem;
+  margin: 20px 10px;
   position: relative;
-  border-radius: 10px; /* Увеличил радиус скругления углов */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card__title {
-  font-weight: 500; /* Увеличил жирность шрифта */
+  font-weight: 500;
   text-align: center;
-  margin-bottom: 10px; /* Увеличил отступ снизу */
+  margin-bottom: 10px;
 }
 
 .card__price {
   font-weight: bold;
   text-align: center;
-  margin-bottom: 10px; /* Увеличил отступ снизу */
+  margin-bottom: 10px;
 }
 
 .image__container {
   width: 100%;
-  height: 150px; /* Увеличил высоту контейнера с изображением */
-  overflow: hidden; /* Обрезаем изображение, если оно выходит за пределы контейнера */
-  border-radius: 8px; /* Увеличил радиус скругления углов */
+  height: 100px;
+  overflow: hidden;
+  border-radius: 8px; 
 }
 
 .image__container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Используем объект-параметр, чтобы изображение полностью заполнило контейнер */
+  object-fit: cover;
 }
 
 .btn-container {
@@ -48,11 +48,11 @@
 
 .card__badge {
   position: absolute;
-  top: -10px; /* Сдвигаем бейдж вверх */
-  right: -10px; /* Сдвигаем бейдж вправо */
+  top: -10px; 
+  right: -10px;
   width: 40px;
   height: 40px;
-  background-color: var(--primary-color); /* Используем основной цвет для бейджа */
+  background-color: var(--primary-color);
   border-radius: 50%;
   color: #fff;
   font-weight: bold;
@@ -62,7 +62,7 @@
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .card__badge--hidden {
