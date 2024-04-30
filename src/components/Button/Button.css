@@ -1,34 +1,37 @@
 :root {
-  --add-color: #e0c521;
-  --remove-color: tomato;
-  --checkout-color: rgb(38, 121, 38);
+  --add-color: #4CAF50;
+  --remove-color: #F44336;
+  --checkout-color: #2196F3;
 }
 
 .btn {
-  padding: 0.6rem 0.8rem;
-  font-size: 1.2rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
   text-align: center;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   width: 120px;
   margin-left: 10px;
-  box-shadow: 1px -3px 52px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 .btn.add {
   background-color: var(--add-color);
+  color: #fff;
 }
 
 .btn.remove {
   background-color: var(--remove-color);
+  color: #fff;
 }
 
 .btn.checkout {
   background-color: var(--checkout-color);
-  width: 150px;
   color: #fff;
-  font-size: 14px;
+  width: 150px;
+  font-size: 1.1rem;
 }
 
 .btn:active {
@@ -36,21 +39,13 @@
 }
 
 .btn.add:hover {
-  background-color: #cab320;
-}
-
-.btn.add:active {
-  background-color: #ad9a1c;
+  background-color: #43A047;
 }
 
 .btn.remove:hover {
-  background-color: rgb(209, 83, 61);
-}
-
-.btn.remove:active {
-  background-color: rgb(185, 73, 54);
+  background-color: #E53935;
 }
 
 .btn.checkout:hover {
-  background-color: rgb(41, 141, 41);
+  background-color: #1E88E5;
 }
