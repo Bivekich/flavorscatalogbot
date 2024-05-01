@@ -1,19 +1,18 @@
 :root {
-  --primary-color: #FF6B6B; 
+  --primary-color: #2196F3; 
 }
 
 .card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 150px; 
+  width: 150px;
   height: 250px;
   border: 2px solid var(--primary-color);
-  padding: 0.5rem;
-  margin: 20px 10px;
+  padding: 0.5rem 0.3rem;
+  margin: 13px 10px;
   position: relative;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 .card__title {
