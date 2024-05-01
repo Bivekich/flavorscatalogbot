@@ -1,5 +1,5 @@
 :root {
-  --add-color: #4CAF50;
+  --add-color: #2481CC;
   --remove-color: #F44336;
   --checkout-color: #2196F3;
 }
@@ -12,6 +12,7 @@
   border-radius: 8px;
   width: 120px;
   margin-left: 10px;
+  margin-right: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
@@ -39,7 +40,7 @@
 }
 
 .btn.add:hover {
-  background-color: #43A047;
+  background-color: #1E88E5;
 }
 
 .btn.remove:hover {
