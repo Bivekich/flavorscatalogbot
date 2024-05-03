@@ -14,7 +14,7 @@ body {
 }
 
 .category__buttons {
-  margin-bottom: 20px;
+  margin: 0 20px;
   display: flex;
   justify-content: center;
 }
