@@ -59,7 +59,7 @@ function App() {
       text: `Новый заказ!\nИмя: ${formData.name}\nПримечание к заказу: ${formData.description}\n\nТовары: ${cartItems.map(item => `${item.title} (Количество: ${item.quantity})`).join(', ')}`
     })
     axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      chat_id: Telegram.initDataUnsafe?.user?.id,
+      chat_id: Telegram.initDataUnsafe?.id,
       text: `Ваш заказ успешно создан!\n\nТовары: ${cartItems.map(item => `${item.title} (Количество: ${item.quantity})`).join(', ')}`
     })
     setCartItems([])
