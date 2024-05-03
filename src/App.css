@@ -12,3 +12,23 @@ body {
 .heading {
   text-align: center;
 }
+
+.category__buttons {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.category__buttons button {
+  background-color: #2481CC;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}

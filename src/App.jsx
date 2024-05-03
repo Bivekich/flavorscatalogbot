@@ -16,6 +16,7 @@ const Telegram = window.Telegram.WebApp
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [showForm, setShowForm] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   useEffect(() => {
     Telegram.ready();
@@ -58,13 +59,10 @@ function App() {
       chat_id: TELEGRAM_CHAT_ID,
       text: `Новый заказ!\nИмя: ${formData.name}\nПримечание к заказу: ${formData.description}\n\nТовары: ${cartItems.map(item => `${item.title} (Количество: ${item.quantity})`).join(', ')}`
     })
-    axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      chat_id: Telegram.initDataUnsafe.user.id,
-      text: `Ваш заказ успешно создан!\n\nТовары: ${cartItems.map(item => `${item.title} (Количество: ${item.quantity})`).join(', ')}`
-    })
-
     setCartItems([])
   }
+
+  const filteredFoods = selectedCategory ? foods.filter(food => food.category === selectedCategory) : foods
 
   return (
     <>
@@ -75,8 +73,15 @@ function App() {
         <Cart cartItems={cartItems} onCheckout={onCheckout} />
       )}
 
+      <div className="category__buttons">
+        <button onClick={() => setSelectedCategory(null)}>Все</button>
+        <button onClick={() => setSelectedCategory('Мясо')}>Мясо</button>
+        <button onClick={() => setSelectedCategory('Мясные сеты')}>Мясные сеты</button>
+        <button onClick={() => setSelectedCategory('Другое')}>Другое</button>
+      </div>
+
       <div className="cards__container">
-        {foods.map((food) => {
+        {filteredFoods.map((food) => {
           return (
             <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
           );
