@@ -32,3 +32,11 @@ body {
   cursor: pointer;
   border-radius: 10px;
 }
+
+.category__buttons button:hover {
+  background-color: #1E88E5;
+}
+
+.category__buttons button:active {
+  transform: scale(0.98);
+}

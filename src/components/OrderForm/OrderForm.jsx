@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './OrderForm.css';
+import Button from "../Button/Button";
 
-function OrderForm({ onSubmit, onClose }) {
+function OrderForm({onSubmit, onClose}) {
     const [formData, setFormData] = useState({
-        name: '',
-        description: '',
+        name: '', description: '',
     });
+    const [submitted, setSubmitted] = useState(false);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData({
-            ...formData,
-            [name]: value
+            ...formData, [name]: value
         });
     };
 
@@ -19,27 +19,37 @@ function OrderForm({ onSubmit, onClose }) {
         e.preventDefault();
         onSubmit(formData);
         setFormData({
-            name: '',
-            description: ''
+            name: '', description: ''
         });
+        setSubmitted(true)
     };
 
-    return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <h1 className='form-title'>Оформление заказа</h1>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <input type="text" name='name' value={formData.name} onChange={handleChange} placeholder='Имя' required />
-                    </div>
-                    <div className="form-group">
-                        <input type="text" name='description' value={formData.description} onChange={handleChange} placeholder='Примечание к заказу' required />
-                    </div>
-                    <button className='submit-button' type='submit'>Оформить заказ</button>
-                </form>
-            </div>
+    return (<div className="modal-overlay">
+        <div className="modal-content">
+            {submitted ? (<div className='success-message'>
+                <span>Ваш заказ успешно создан!</span>
+                <Button title={'Закрыть'} type={'add'} onClick={onClose}/>
+            </div>) : (
+                <div>
+                    <h1 className='form-title'>Оформление заказа</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <input type="text" name='name' value={formData.name} onChange={handleChange}
+                                   placeholder='Имя'
+                                   required/>
+                        </div>
+                        <div className="form-group">
+                            <input type="text" name='description' value={formData.description} onChange={handleChange}
+                                   placeholder='Примечание к заказу' required/>
+                        </div>
+                        <button className='submit-button' type='submit'>Оформить заказ</button>
+                    </form>
+                </div>
+            )}
         </div>
-    );
+        </div>
+    )
+        ;
 }
 
 export default OrderForm;

@@ -54,12 +54,16 @@ function App() {
 
   const handleFormSubmit = (formData) => {
     console.log('Отправить заказ:', formData, cartItems);
-    setShowForm(false)
     axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
       chat_id: TELEGRAM_CHAT_ID,
       text: `Новый заказ!\nИмя: ${formData.name}\nПримечание к заказу: ${formData.description}\n\nТовары: ${cartItems.map(item => `${item.title} (Количество: ${item.quantity})`).join(', ')}`
     })
     setCartItems([])
+  }
+
+  const handleFormClose = () => {
+    setShowForm(false)
+    Telegram.close()
   }
 
   const filteredFoods = selectedCategory ? foods.filter(food => food.category === selectedCategory) : foods
@@ -68,7 +72,7 @@ function App() {
     <>
       <h1 className="heading">Каталог вкусов</h1>
       {showForm ? (
-        <OrderForm onSubmit={handleFormSubmit} />
+        <OrderForm onSubmit={handleFormSubmit} onClose={handleFormClose} />
       ) : (
         <Cart cartItems={cartItems} onCheckout={onCheckout} />
       )}
