@@ -22,7 +22,7 @@ bot.on('message', async (msg) => {
     if (text === '/start') {
         await bot.sendMessage(userId, `Давайте начнем 🥩
 
-Пожалуйста, нажмите на кнопку ниже, чтобы заказать свой идеальный обед!.`, {
+Пожалуйста, нажмите на кнопку ниже, чтобы заказать свой идеальный обед!`, {
             reply_markup: {
                 keyboard: [[{text: "Заказать еду", web_app: {url: webAppUrl}}]]
             }
@@ -35,7 +35,11 @@ app.post('/web-data', async (req, res) => {
     const currentDate = new Date()
     const formattedDate = formatDate(currentDate)
     try {
-        await bot.sendMessage(userId, `${formattedDate} вы оформили заказ\n\n${products.map(item => item.title).join(', ')}`)
+        await bot.sendMessage(userId, `Каталог вкусов - Ваш заказ
+        
+${formattedDate} вы оформили заказ\n\n${products.map(item => {
+            return `🔹 ${item.title} (Количество: ${item.quantity})\n`;
+        }).join('')}`);
         return res.status(200).json({});
     } catch (error) {
         console.error('Error answering WebApp query:', error);
