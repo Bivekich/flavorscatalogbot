@@ -1,6 +1,7 @@
 import TelegramBot from 'node-telegram-bot-api'
 import express from 'express'
 import cors from 'cors'
+import {formatDate} from "./formatDate.js";
 
 const token = '6757073330:AAFtn6evlg50y9F70ncomVXWlikDF6LhKLk'
 const webAppUrl  = 'https://flavorscatalogbot.netlify.app/'
@@ -11,12 +12,15 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+let userId = {}
+
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id
     const text = msg.text
+    userId = chatId
 
     if (text === '/start') {
-        await bot.sendMessage(chatId, `Давайте начнем 🥩
+        await bot.sendMessage(userId, `Давайте начнем 🥩
 
 Пожалуйста, нажмите на кнопку ниже, чтобы заказать свой идеальный обед!.`, {
             reply_markup: {
@@ -27,18 +31,14 @@ bot.on('message', async (msg) => {
 })
 
 app.post('/web-data', async (req, res) => {
-    const {queryId ,products = []} = req.body
+    const {products = []} = req.body
+    const currentDate = new Date()
+    const formattedDate = formatDate(currentDate)
     try {
-        await bot.answerWebAppQuery(queryId, {
-            type: 'article',
-            id: queryId,
-            title: 'Успешная покупка',
-            input_message_content: {
-                message_text: ` вы оформили заказ\n\n${products.map(item => item.title).join(', ')}`
-            }
-        })
+        await bot.sendMessage(userId, `${formattedDate} вы оформили заказ\n\n${products.map(item => item.title).join(', ')}`)
         return res.status(200).json({});
-    } catch (e) {
+    } catch (error) {
+        console.error('Error answering WebApp query:', error);
         return res.status(500).json({})
     }
 })

@@ -60,7 +60,6 @@ function App() {
     })
     const data = {
       products: cartItems,
-      queryId: 1,
     };
     axios.post('http://localhost:8000/web-data', data, {
       headers: {
