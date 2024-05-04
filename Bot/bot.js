@@ -1,6 +1,6 @@
-const TelegramBot = require('node-telegram-bot-api');
-const express = require('express');
-const cors = require('cors');
+import TelegramBot from 'node-telegram-bot-api'
+import express from 'express'
+import cors from 'cors'
 
 const token = '6757073330:AAFtn6evlg50y9F70ncomVXWlikDF6LhKLk'
 const webAppUrl  = 'https://flavorscatalogbot.netlify.app/'
