@@ -7,11 +7,11 @@ import Img6 from "/images/6.png";
 
 export function getData() {
   return [
-    { title: "Перепел", category: 'Мясо', price: 180, image: Img1, id: 1 },
-    { title: "Цыпленок корнишен", category: 'Мясо', price: 330, image: Img2, id: 2 },
-    { title: "Цыпленок корнишен 700+ гр.", category: 'Мясные сеты', price: 350, image: Img3, id: 3 },
-    { title: "Кура дер", category: 'Мясо', price: 350, image: Img4, id: 4 },
-    { title: "Крылья дом кур (цена за 1 кг.)", category: 'Мясо', price: 450, image: Img5, id: 5 },
-    { title: "Цыпленок копченый доминант 350+ гр. (цена за 1 шт.)", category: 'Мясные сеты', price: 450, image: Img6, id: 6 },
+    { title: "Перепел", category: 'Мясо', price: 180, image: [Img1, Img2, Img3], id: 1, description: '123' },
+    { title: "Цыпленок корнишен", category: 'Мясо', price: 330, image: [Img2], id: 2 },
+    { title: "Цыпленок корнишен 700+ гр.", category: 'Мясные сеты', price: 350, image: [Img3], id: 3 },
+    { title: "Кура дер", category: 'Мясо', price: 350, image: [Img4], id: 4 },
+    { title: "Крылья дом кур (цена за 1 кг.)", category: 'Мясо', price: 450, image: [Img5], id: 5 },
+    { title: "Цыпленок копченый доминант 350+ гр. (цена за 1 шт.)", category: 'Мясные сеты', price: 450, image: [Img6], id: 6 },
   ];
 }
