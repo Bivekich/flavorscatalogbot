@@ -9,7 +9,7 @@ import { getData } from './db/db'
 const foods = getData()
 
 const TELEGRAM_BOT_TOKEN = '6757073330:AAFtn6evlg50y9F70ncomVXWlikDF6LhKLk'
-const TELEGRAM_CHAT_ID = '5379725422'
+const TELEGRAM_CHAT_ID = '6991790632'
 
 const Telegram = window.Telegram.WebApp
 
