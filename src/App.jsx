@@ -61,7 +61,7 @@ function App() {
     const data = {
       products: cartItems,
     };
-    axios.post('http://91.210.170.175:8000/web-data', data, {
+    axios.post('http://94.228.126.235:8000/web-data', data, {
       headers: {
         'Content-Type': 'application/json',
       },
