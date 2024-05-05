@@ -61,11 +61,15 @@ function App() {
     const data = {
       products: cartItems,
     };
-    axios.post('http://94.228.126.235:8000/web-data', data, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    try {
+      axios.post('http://94.228.126.235:8000/web-data', data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+    } catch (error) {
+      console.error(error)
+    }
     setCartItems([])
   }
 
