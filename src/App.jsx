@@ -26,9 +26,9 @@ function App() {
     const exist = cartItems.find((x) => x.id === food.id);
     if (exist) {
       setCartItems(
-        cartItems.map((x) =>
-          x.id === food.id ? { ...exist, quantity: exist.quantity + 1 } : x
-        )
+          cartItems.map((x) =>
+              x.id === food.id ? { ...exist, quantity: exist.quantity + 1 } : x
+          )
       );
     } else {
       setCartItems([...cartItems, { ...food, quantity: 1 }]);
@@ -41,9 +41,9 @@ function App() {
       setCartItems(cartItems.filter((x) => x.id !== food.id));
     } else {
       setCartItems(
-        cartItems.map((x) =>
-          x.id === food.id ? { ...exist, quantity: exist.quantity - 1 } : x
-        )
+          cartItems.map((x) =>
+              x.id === food.id ? { ...exist, quantity: exist.quantity - 1 } : x
+          )
       );
     }
   };
@@ -81,29 +81,29 @@ function App() {
   const filteredFoods = selectedCategory ? foods.filter(food => food.category === selectedCategory) : foods
 
   return (
-    <>
-      <h1 className="heading">Каталог вкусов</h1>
-      {showForm ? (
-        <OrderForm onSubmit={handleFormSubmit} onClose={handleFormClose} />
-      ) : (
-        <Cart cartItems={cartItems} onCheckout={onCheckout} />
-      )}
+      <>
+        <h1 className="heading">Каталог вкусов</h1>
+        {showForm ? (
+            <OrderForm onSubmit={handleFormSubmit} onClose={handleFormClose} />
+        ) : (
+            <Cart cartItems={cartItems} onCheckout={onCheckout} />
+        )}
 
-      <div className="category__buttons">
-        <button onClick={() => setSelectedCategory(null)}>Все</button>
-        <button onClick={() => setSelectedCategory('Мясо')}>Мясо</button>
-        <button onClick={() => setSelectedCategory('Мясные сеты')}>Мясные сеты</button>
-        <button onClick={() => setSelectedCategory('Другое')}>Другое</button>
-      </div>
+        <div className="category__buttons">
+          <button onClick={() => setSelectedCategory(null)}>Все</button>
+          <button onClick={() => setSelectedCategory('Мясо')}>Мясо</button>
+          <button onClick={() => setSelectedCategory('Мясные сеты')}>Мясные сеты</button>
+          <button onClick={() => setSelectedCategory('Другое')}>Другое</button>
+        </div>
 
-      <div className="cards__container">
-        {filteredFoods.map((food) => {
-          return (
-            <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
-          );
-        })}
-      </div>
-    </>
+        <div className="cards__container">
+          {filteredFoods.map((food) => {
+            return (
+                <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
+            );
+          })}
+        </div>
+      </>
   );
 }
 
