@@ -47,6 +47,6 @@ ${formattedDate} вы оформили заказ\n\n${products.map(item => {
     }
 })
 
-const PORT = 5000;
+const PORT = 8000;
 
 app.listen(PORT, () => console.log('server started on PORT ' + PORT))
