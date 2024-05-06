@@ -58,7 +58,7 @@ bot.on('callback_query', async (query) => {
     const chatId = query.message.chat.id;
 
     if (data === "new_order") {
-        await bot.sendMessage(chatId, "/start");
+        await bot.sendMessage(chatId, "Для создания нового заказа нажмите на **/start**");
     }
 });
 
