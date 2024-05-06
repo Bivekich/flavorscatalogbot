@@ -4,7 +4,7 @@ import cors from 'cors'
 import {formatDate} from "./formatDate.js";
 
 const token = '6757073330:AAFtn6evlg50y9F70ncomVXWlikDF6LhKLk'
-const webAppUrl  = 'http://flavorscatalogbot.netlify.app/'
+const webAppUrl  = 'https://flavorscatalogbot.netlify.app/'
 
 const bot = new TelegramBot(token, {polling: true});
 const app = express()
