@@ -62,7 +62,7 @@ function App() {
       products: cartItems,
     };
     try {
-      axios.post('http://94.228.126.235:8000/web-data', data, {
+      axios.post('https://flavorscatalogbot.ru/web-data', data, {
         headers: {
           'Content-Type': 'application/json',
         },
