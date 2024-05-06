@@ -27,6 +27,7 @@ bot.on('message', async (msg) => {
                 keyboard: [[{text: "Заказать еду", web_app: {url: webAppUrl}}]]
             }
         })
+        console.log(userId)
     }
 })
 
@@ -39,13 +40,28 @@ app.post('/web-data', async (req, res) => {
         
 ${formattedDate} вы оформили заказ\n\n${products.map(item => {
             return `🔹 ${item.title} (Количество: ${item.quantity})\n`;
-        }).join('')}`);
+        }).join('')}`, {
+            reply_markup: {
+                inline_keyboard: [[{ text: "Сделать новый заказ", callback_data: "new_order" }]]
+            }
+        });
+
         return res.status(200).json({});
     } catch (error) {
         console.error('Error answering WebApp query:', error);
         return res.status(500).json({})
     }
 })
+
+bot.on('callback_query', async (query) => {
+    const data = query.data;
+    const chatId = query.message.chat.id;
+
+    if (data === "new_order") {
+        await bot.sendMessage(chatId, "/start");
+    }
+});
+
 
 const PORT = 8000;
 
