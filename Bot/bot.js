@@ -2,6 +2,7 @@ import TelegramBot from 'node-telegram-bot-api'
 import express from 'express'
 import cors from 'cors'
 import {formatDate} from "./formatDate.js";
+import {User} from "./db.js"
 
 const token = '6757073330:AAFtn6evlg50y9F70ncomVXWlikDF6LhKLk'
 const webAppUrl  = 'https://flavorscatalogbot.netlify.app/'
@@ -27,7 +28,12 @@ bot.on('message', async (msg) => {
                 keyboard: [[{text: "Заказать еду", web_app: {url: webAppUrl}}]]
             }
         })
-        console.log(userId)
+
+        try {
+            await User.updateOne({userId: chatId}, {userId: chatId}, {upsert: true})
+        } catch (error) {
+            console.error('Ошибка отслеживания пользователя', error)
+        }
     }
 })
 
@@ -59,9 +65,39 @@ bot.on('callback_query', async (query) => {
 
     if (data === "new_order") {
         await bot.sendMessage(chatId, "Для создания нового заказа нажмите на -> /start");
+    } else if (data.startsWith('stats_')) {
+        const range = data.split('_')[1]
+        let days
+        if (range === '1day') days = 1
+        else if (range === '7days') days = 7
+        else if (range === '30days') days = 30
+        
+        const dataThreshold = new Date()
+        dataThreshold.setDate(dataThreshold.getDate() - days)
+        
+        try {
+            const userCount = await User.countDocuments({createdAt: {$gte: dataThreshold}})
+            await bot.sendMessage(chatId, `Количество уникальных пользователей за последние ${days} дней: ${userCount}`)
+        } catch (error) {
+            console.error('Ошибка получения статистики', error)
+            await bot.sendMessage(chatId, 'Не удалось получить статистику.')
+        }
     }
 });
 
+bot.onText(/\/stats/, async (msg) => {
+    const chatId = msg.chat.id;
+    
+    await bot.sendMessage(chatId, 'Выберите промежуток времени для статистики:', {
+        reply_markup: {
+            inline_keyboard: [
+                [{text: '1 день', callback_data: 'stats_1day'}],
+                [{text: '7 дней', callback_data: 'stats_7days'}],
+                [{text: '30 дней', callback_data: 'stats_30days'}],
+            ]
+        }
+    })
+})
 
 const PORT = 8000;
 
