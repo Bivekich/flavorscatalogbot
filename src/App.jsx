@@ -91,9 +91,9 @@ function App() {
 
         <div className="category__buttons">
           <button onClick={() => setSelectedCategory(null)}>Все</button>
-          <button onClick={() => setSelectedCategory('Мясо')}>Мясо</button>
-          <button onClick={() => setSelectedCategory('Мясные сеты')}>Мясные сеты</button>
-          <button onClick={() => setSelectedCategory('Другое')}>Другое</button>
+          <button onClick={() => setSelectedCategory('Розница')}>Розница</button>
+          <button onClick={() => setSelectedCategory('Опт')}>Опт</button>
+          <button onClick={() => setSelectedCategory('Сет')}>Сеты</button>
         </div>
 
         <div className="cards__container">
