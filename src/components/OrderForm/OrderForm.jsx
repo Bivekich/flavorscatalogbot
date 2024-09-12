@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 
 function OrderForm({onSubmit, onClose}) {
     const [formData, setFormData] = useState({
-        name: '', description: '',
+        name: '', description: '', city: '' 
     });
     const [submitted, setSubmitted] = useState(false);
 
@@ -17,9 +17,9 @@ function OrderForm({onSubmit, onClose}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit(formData);
+        onSubmit(formData); 
         setFormData({
-            name: '', description: ''
+            name: '', description: '', city: '' 
         });
         setSubmitted(true)
     };
@@ -41,6 +41,13 @@ function OrderForm({onSubmit, onClose}) {
                         <div className="form-group">
                             <input type="text" name='description' value={formData.description} onChange={handleChange}
                                    placeholder='Примечание к заказу' required/>
+                        </div>
+                        <div className="form-group">
+                            <select name='city' value={formData.city} onChange={handleChange} required>
+                                <option value=''>Выберите город</option>
+                                <option value='Иваново'>Иваново</option>
+                                <option value='Ярославльг'>Ярославль</option>
+                            </select>
                         </div>
                         <button className='submit-button' type='submit'>Оформить заказ</button>
                     </form>

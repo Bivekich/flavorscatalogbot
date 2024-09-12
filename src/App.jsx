@@ -8,8 +8,8 @@ import OrderForm from './components/OrderForm/OrderForm'
 import { getData } from './db/db'
 const foods = getData()
 
-const TELEGRAM_BOT_TOKEN = '6757073330:AAFtn6evlg50y9F70ncomVXWlikDF6LhKLk'
-const TELEGRAM_CHAT_ID = '6991790632'
+const TELEGRAM_BOT_TOKEN = '7344601477:AAEhACIFDUIg-aorq829R0X1lKAg7g5WpAI'; // Updated bot token
+const TELEGRAM_CHAT_ID = '-4545329962'; 
 
 const Telegram = window.Telegram.WebApp
 
@@ -54,10 +54,15 @@ function App() {
 
   const handleFormSubmit = (formData) => {
     console.log('Отправить заказ:', formData, cartItems);
+    
+   
+    const chatId = formData.city === 'Иваново' ? '-4594175705' : TELEGRAM_CHAT_ID;
+
     axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      chat_id: TELEGRAM_CHAT_ID,
-      text: `Новый заказ!\nИмя: ${formData.name}\nПримечание к заказу: ${formData.description}\n\nТовары: ${cartItems.map(item => `${item.title} (Количество: ${item.quantity})`).join(', ')}`
-    })
+      chat_id: chatId,
+      text: `Новый заказ!\nИмя: ${formData.name}\nПримечание к заказу: ${formData.description}\nГород: ${formData.city}\n\nТовары: ${cartItems.map(item => `${item.title} (Количество: ${item.quantity})`).join(', ')}` 
+    });
+    
     const data = {
       products: cartItems,
     };
@@ -66,11 +71,11 @@ function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-      })
+      });
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-    setCartItems([])
+    setCartItems([]);
   }
 
   const handleFormClose = () => {
